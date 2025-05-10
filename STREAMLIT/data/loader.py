@@ -29,7 +29,7 @@ from pandas.api.types import CategoricalDtype
 
 def load_financial_data():
     """Load and process financial data from CSV"""
-    data_dir = Path(__file__).parent.parent / "assets" / "data"
+    data_dir = Path(__file__).parent.parent / "STREAMLIT" / "assets" / "data"
     file_path = data_dir / "6.2 (his) financialreport_metrics_FPT_CMG_processed.csv"
 
     try:
@@ -118,7 +118,7 @@ def extract_unit(indicator_list):
 
 def load_financial_data1():
     """Load and process financial data from CSV"""
-    data_dir = Path(__file__).parent.parent / "assets" / "data"
+    data_dir = Path(__file__).parent.parent / "STREAMLIT" / "assets" / "data"
     file_path = data_dir / "6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv"
 
     try:
@@ -167,8 +167,8 @@ from services.financial_utils import advanced_preprocess
 
 def load_stock_transaction_data():
     file_paths = {
-        'FPT': 'assets/data/4.2.3 (TARGET) (live & his) FPT_detail_transactions_processed.csv',
-        'CMG': 'assets/data/4.2.3 (TARGET) (live & his) CMG_detail_transactions_processed.csv',
+        'FPT': 'STREAMLIT/assets/data/4.2.3 (TARGET) (live & his) FPT_detail_transactions_processed.csv',
+        'CMG': 'STREAMLIT/assets/data/4.2.3 (TARGET) (live & his) CMG_detail_transactions_processed.csv',
     }
 
     stock_data = {}
