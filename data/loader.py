@@ -118,8 +118,7 @@ def extract_unit(indicator_list):
 
 def load_financial_data1():
     """Load and process financial data from CSV"""
-    data_dir = Path(__file__).parent.parent / "assets" / "data"
-    file_path = data_dir / "6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv"
+    file_path = "assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv"
 
     try:
         df = pd.read_csv(file_path, encoding='utf-8-sig')
