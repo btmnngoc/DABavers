@@ -4,10 +4,10 @@ import streamlit as st
 
 def load_real_data():
     data_paths = {
-        'FPT': 'assets/data/6.2 (his) financialreport_metrics_FPT_CMG_processed.csv',
-        'CMG': 'assets/data/6.2 (his) financialreport_metrics_FPT_CMG_processed.csv',
-        'Thị trường': 'assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv',
-        'Ngành CNTT': 'assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv'
+        'FPT': 'STREAMLIT/assets/data/6.2 (his) financialreport_metrics_FPT_CMG_processed.csv',
+        'CMG': 'STREAMLIT/assets/data/6.2 (his) financialreport_metrics_FPT_CMG_processed.csv',
+        'Thị trường': 'STREAMLIT/assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv',
+        'Ngành CNTT': 'STREAMLIT/assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv'
     }
 
     data = {}
