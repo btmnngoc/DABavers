@@ -125,9 +125,7 @@ from utils.plotting import plot_financial_metrics
 from services.financial_utils import clean_indicator_name, get_indicator_groups
 
 
-def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
-    st.header(f"📊 Phân Tích Chỉ Số Tài Chính - {sector_name}")
-
+def render_sector_indicators(csv_path):
     try:
         df = pd.read_csv(csv_path)
     except Exception as e:
@@ -137,7 +135,6 @@ def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
     # Làm sạch và chuẩn hoá
     df = df.drop(labels='Stocks', axis=1, errors='ignore')
     df['Indicator'] = df['Indicator'].astype(str).str.strip()
-    df['StockID'] = sector_name  # để có thể tái sử dụng hàm vẽ hiện tại
 
     # Melt về long
     time_cols = df.columns[2:]
