@@ -119,14 +119,14 @@ import pandas as pd
 import re
 from pandas.api.types import CategoricalDtype
 from utils.plotting import plot_financial_metrics
-from services.financial_utils import clean_indicator_name, get_indicator_groups
+from services.financial_utils import clean_indicator_name, get_indicator_groups1
 
 
 def render_sector_indicators(data):
     # Load data
-    from data.loader import load_financial_data1, get_indicator_groups
+    from data.loader import load_financial_data1, get_indicator_groups1
     df = load_financial_data1()
-    indicator_groups = get_indicator_groups()
+    indicator_groups = get_indicator_groups1()
 
     # Filter for selected stock
 
