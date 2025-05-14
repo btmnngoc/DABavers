@@ -119,7 +119,8 @@ import pandas as pd
 import re
 from pandas.api.types import CategoricalDtype
 from utils.plotting import plot_financial_metrics
-from services.financial_utils import clean_indicator_name, get_indicator_groups1
+from services.financial_utils import clean_indicator_name
+from data.loader import get_indicator_groups1, load_financial_data1
 
 
 def render_sector_indicators(data):
