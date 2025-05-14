@@ -112,9 +112,6 @@ def render_financial_health(data, stock):
             else:
                 st.warning("Không có dữ liệu để vẽ biểu đồ")
 
-def render_stock_movement(data, stock):
-    st.header(f"📈 Biến Động Cổ Phiếu - {stock}")
-    st.info("Tính năng đang chờ phát triển...")
 
 
 import streamlit as st
@@ -125,7 +122,7 @@ from utils.plotting import plot_financial_metrics
 from services.financial_utils import clean_indicator_name, get_indicator_groups
 
 
-def render_sector_indicators(csv_path):
+def render_sector_indicators(data):
     """Display financial health analysis for a stock"""
     st.header(f"📈 Sức Khỏe Tài Chính - {stock}")
 
