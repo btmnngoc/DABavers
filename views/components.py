@@ -114,60 +114,6 @@ def render_financial_health(data, stock):
 
 
 
-import streamlit as st
-import pandas as pd
-import re
-from pandas.api.types import CategoricalDtype
-from utils.plotting import plot_financial_metrics
-from services.financial_utils import clean_indicator_name
-from data.loader import get_indicator_groups1, load_financial_data1
-
-
-def render_sector_indicators(data):
-    # Load data
-    from data.loader import load_financial_data1, get_indicator_groups1
-    df = load_financial_data1()
-    indicator_groups = get_indicator_groups1()
-
-    # Filter for selected stock
-
-    # Create tabs for each indicator group
-    tabs = st.tabs(list(indicator_groups.keys()))
-
-    for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
-        with tab:
-            # Get data for current group
-            sub = df_stock[df_stock['Indicator'].isin(indicators)]
-
-            if sub.empty:
-                st.warning(f"Không có dữ liệu cho nhóm {group_name}")
-                continue
-
-            # Display data table
-            st.subheader(f"Bảng số liệu {group_name}")
-            # Trong hàm show_financial_health()
-            pivot_df = sub.pivot(index='Period', columns='Indicator', values='Value')
-            pivot_df = pivot_df.sort_index()  # Thêm dòng này để sắp xếp theo thứ tự thời gian
-            pivot_df.columns = [clean_indicator_name(col) for col in pivot_df.columns]
-            st.dataframe(
-                pivot_df.style.format("{:.2f}"),
-                use_container_width=True,
-                height=300
-            )
-
-            # Display interactive chart
-            st.subheader(f"Biểu đồ {group_name}")
-            fig = plot_financial_metrics(
-                df,
-                stock,
-                {group_name: indicators}
-            )
-
-            if fig:
-                st.plotly_chart(fig, use_container_width=True)
-            else:
-                st.warning("Không có dữ liệu để vẽ biểu đồ")
-
 import plotly.graph_objects as go
 from services.financial_utils import compute_rsi
 
