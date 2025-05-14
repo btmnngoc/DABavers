@@ -1,6 +1,6 @@
 from data.loader import load_real_data
 from views.analysis import handle_analysis_menu
-from views.components import render_sidebar_header, render_footer, local_css, render_sidebar_footer
+from views.components import render_sidebar_header, render_footer, local_css
 from data.loader import load_stock_transaction_data
 import streamlit as st
 
@@ -10,7 +10,6 @@ def main():
     local_css()
     data = load_real_data()
     render_sidebar_header()
-    render_sidebar_footer()
     # 🔁 Thêm dữ liệu phân tích kỹ thuật
     transaction_data = load_stock_transaction_data()
     data.update(transaction_data)  # Hợp nhất vào dict `data`
