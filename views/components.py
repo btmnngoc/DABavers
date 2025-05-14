@@ -123,9 +123,6 @@ from services.financial_utils import clean_indicator_name, get_indicator_groups
 
 
 def render_sector_indicators(data):
-    """Display financial health analysis for a stock"""
-    st.header(f"📈 Sức Khỏe Tài Chính - {stock}")
-
     # Load data
     from data.loader import load_financial_data1, get_indicator_groups
     df = load_financial_data1()
