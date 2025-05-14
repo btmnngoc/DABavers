@@ -32,3 +32,5 @@ if __name__ == "__main__":
     main()
 
 st.write('Ngọc đẹp chai')
+
+st.button('click here if ur good at data analysis')
