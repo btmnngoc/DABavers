@@ -20,7 +20,7 @@ def clean_indicator_name(ind):
     """Remove trailing units (e.g. '\n%' or '\nLần')"""
     return re.sub(r'\n.+$', '', ind)
 
-def get_indicator_groups():
+def get_indicator_groups1():
     return {
         'Khả năng sinh lời': [
             'Tỷ suất sinh lợi trên tổng tài sản bình quân (ROAA)\n%',
