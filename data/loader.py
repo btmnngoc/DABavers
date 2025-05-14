@@ -115,52 +115,6 @@ def extract_unit(indicator_list):
             units.add(match.group(1))
     return ', '.join(units) if units else ''
 
-
-def load_financial_data1():
-    file_path = "assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv"
-
-    try:
-        df = pd.read_csv(file_path, encoding='utf-8-sig')
-
-        # Clean Indicator column
-        df['Indicator'] = df['Indicator'].astype(str).str.strip()
-
-        # Melt to long format
-        time_cols = [col for col in df.columns if col.startswith('Q')]
-        df_long = df.melt(
-            id_vars=['Indicator', 'StockID'],
-            value_vars=time_cols,
-            var_name='Period',
-            value_name='Value'
-        )
-
-        # Clean Value column
-        df_long['Value'] = (
-            df_long['Value']
-            .astype(str)
-            .str.replace(',', '')
-            .str.replace('\n', '')
-            .replace('', pd.NA)
-            .astype(float)
-        )
-        df_long.dropna(subset=['Value'], inplace=True)
-
-        # Cập nhật phần chuẩn hóa định dạng thời gian
-        period_order = [
-            'Q1_2023', 'Q2_2023', 'Q3_2023', 'Q4_2023',
-            'Q1_2024', 'Q2_2024', 'Q3_2024', 'Q4_2024'  # Thêm các quý 2024 nếu có
-        ]
-
-        # Chuyển Period thành kiểu Categorical với thứ tự đúng
-        period_type = CategoricalDtype(categories=period_order, ordered=True)
-        df_long['Period'] = df_long['Period'].astype(period_type)
-        df_long = df_long.sort_values(['Period'])
-
-        return df_long
-
-    except Exception as e:
-        raise Exception(f"Error loading financial data: {str(e)}")
-
 from services.financial_utils import advanced_preprocess
 
 def load_stock_transaction_data():
@@ -177,28 +131,3 @@ def load_stock_transaction_data():
         else:
             stock_data[stock] = pd.DataFrame()
     return stock_data
-
-def get_indicator_groups1():
-    return {
-        'Khả năng sinh lời': [
-            'Tỷ suất sinh lợi trên tổng tài sản bình quân (ROAA)\n%',
-            'Tỷ suất lợi nhuận trên vốn chủ sở hữu bình quân (ROEA)\n%',
-            'Tỷ suất lợi nhuận gộp biên\n%',
-            'Tỷ suất sinh lợi trên doanh thu thuần\n%'
-        ],
-        'Khả năng thanh toán': [
-            'Tỷ số thanh toán hiện hành (ngắn hạn)\nLần',
-            'Tỷ số thanh toán nhanh\nLần',
-            'Tỷ số thanh toán bằng tiền mặt\nLần'
-        ],
-        'Hiệu quả hoạt động': [
-            'Vòng quay tổng tài sản (Hiệu suất sử dụng toàn bộ tài sản)\nVòng',
-            'Vòng quay hàng tồn kho\nVòng',
-            'Vòng quay phải thu khách hàng\nVòng'
-        ],
-        'Chỉ số thị trường': [
-            'Chỉ số giá thị trường trên thu nhập (P/E)\nLần',
-            'Chỉ số giá thị trường trên giá trị sổ sách (P/B)\nLần',
-            'Beta\nLần'
-        ]
-    }
