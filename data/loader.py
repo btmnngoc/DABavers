@@ -177,3 +177,28 @@ def load_stock_transaction_data():
         else:
             stock_data[stock] = pd.DataFrame()
     return stock_data
+
+def get_indicator_groups1():
+    return {
+        'Khả năng sinh lời': [
+            'Tỷ suất sinh lợi trên tổng tài sản bình quân (ROAA)\n%',
+            'Tỷ suất lợi nhuận trên vốn chủ sở hữu bình quân (ROEA)\n%',
+            'Tỷ suất lợi nhuận gộp biên\n%',
+            'Tỷ suất sinh lợi trên doanh thu thuần\n%'
+        ],
+        'Khả năng thanh toán': [
+            'Tỷ số thanh toán hiện hành (ngắn hạn)\nLần',
+            'Tỷ số thanh toán nhanh\nLần',
+            'Tỷ số thanh toán bằng tiền mặt\nLần'
+        ],
+        'Hiệu quả hoạt động': [
+            'Vòng quay tổng tài sản (Hiệu suất sử dụng toàn bộ tài sản)\nVòng',
+            'Vòng quay hàng tồn kho\nVòng',
+            'Vòng quay phải thu khách hàng\nVòng'
+        ],
+        'Chỉ số thị trường': [
+            'Chỉ số giá thị trường trên thu nhập (P/E)\nLần',
+            'Chỉ số giá thị trường trên giá trị sổ sách (P/B)\nLần',
+            'Beta\nLần'
+        ]
+    }
