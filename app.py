@@ -31,4 +31,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-st.write('hi')
+st.write('Ngọc đẹp chai')
