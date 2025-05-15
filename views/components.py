@@ -110,7 +110,14 @@ import plotly.graph_objects as go
 from services.financial_utils import compute_rsi
 
 def render_stock_movement(data, stock):
-    st.header(f"📊 Biến Động Cổ Phiếu - {stock}")
+    st.markdown(
+    f"""
+    <h2 style='color: #0E6994; font-weight: 700;'>
+        📊 BIẾN ĐỘNG CỔ PHIẾU - {stock}
+    </h2>
+    """,
+    unsafe_allow_html=True
+)
 
     df = data.get(stock)
     if df is None or df.empty:
