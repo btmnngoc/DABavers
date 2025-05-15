@@ -304,7 +304,7 @@ def render_sector_indicators(csv_path, sector_name="Ngành Công nghệ thông t
 
     for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
         with tab:
-            sub = df_long[df_long['Indicator'].isin(indicators)]
+            sub = df_long[df_long['Indicator'].isin(indicator)]
 
             if sub.empty:
                 st.warning(f"Không có dữ liệu cho nhóm {group_name}")
