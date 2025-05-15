@@ -321,7 +321,7 @@ def render_sector_indicators(data, sector_name="Ngành Công nghệ thông tin")
             )
 
             st.subheader(f"Biểu đồ - {group_name}")
-            fig = plot_financial_metricsne(df_long, indicator_group={group_name: indicators})
+            fig = plot_financial_metricsne(df_longne, indicator_groupsne={group_name: indicators})
             if fig:
                 st.plotly_chart(fig, use_container_width=True)
             else:
