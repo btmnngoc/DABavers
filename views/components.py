@@ -3,6 +3,7 @@ import plotly.express as px
 from datetime import datetime
 from utils.plotting import plot_financial_metrics
 import pandas as pd
+from pandas.api.types import CategoricalDtype
 
 def clean_indicator_name(name):
     # Tùy logic bạn muốn xử lý cột, đây là ví dụ
