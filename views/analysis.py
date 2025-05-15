@@ -9,7 +9,7 @@ def handle_analysis_menu(data):
     ])
 
     if analysis_type == "Tổng quan":
-        render_market_overview()
+        render_market_overview(data)
     elif analysis_type == "Sức khỏe tài chính doanh nghiệp":
         stock = st.sidebar.radio("CHỌN MÃ", ["FPT", "CMG"])
         render_financial_health(data, stock)
