@@ -51,8 +51,14 @@ def render_market_overview(data):
 
 def render_financial_health(data, stock):
     """Display financial health analysis for a stock"""
-    st.header(f"📈 Sức Khỏe Tài Chính - {stock}")
-
+    st.markdown(
+    f"""
+    <h2 style='color: #2E86C1; font-weight: 700;'>
+        📈 Sức Khỏe Tài Chính - {stock}
+    </h2>
+    """,
+    unsafe_allow_html=True
+)
     # Load data
     from data.loader import load_financial_data, get_indicator_groups
     df = load_financial_data()
