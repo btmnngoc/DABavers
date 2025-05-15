@@ -1,9 +1,7 @@
 import pandas as pd
 import re
 
-def clean_indicator_name(indicator):
-    """Clean indicator name by removing unit"""
-    return re.sub(r'\n.+$', '', indicator)
+
 
 def extract_unit(indicator_list):
     """Extract unit from indicator names"""
