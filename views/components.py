@@ -285,8 +285,16 @@ def render_stock_movement(data, stock):
 
         st.plotly_chart(fig, use_container_width=True)
 
-def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
-    st.header(f"📊 Phân Tích Chỉ Số Tài Chính - {sector_name}")
+def render_sector_indicators(csv_path, sector_name="Ngành Công nghệ thông tin"):
+    st.markdown(
+    f"""
+    <h2 style='font-weight: 700; text-align: center;'>
+        <span style='color: #0E6994;'>📊 CHỈ SỐ TÀI CHÍNH THỊ TRƯỜNG  -</span>
+        <span style='color: #FD6200;'>{sector_name}</span>
+    </h2>
+    """,
+    unsafe_allow_html=True
+)
 
     try:
         df = pd.read_csv(csv_path)
