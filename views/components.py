@@ -4,6 +4,7 @@ from datetime import datetime
 from utils.plotting import plot_financial_metrics
 import pandas as pd
 from pandas.api.types import CategoricalDtype
+from data.loader import get_indicator_groups
 
 def clean_indicator_name(name):
     # Tùy logic bạn muốn xử lý cột, đây là ví dụ
