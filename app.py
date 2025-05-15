@@ -5,8 +5,18 @@ from data.loader import load_stock_transaction_data
 import streamlit as st
 
 st.header('DABAFIN - PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP')
-
+def render_page_header():
+    st.markdown(
+        """
+        <h1 style='text-align: center; font-size: 2.5rem; color: #2E86C1;
+                   border-bottom: 1px solid #ccc; padding-bottom: 10px;'>
+            DABAFIN - PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP
+        </h1>
+        """,
+        unsafe_allow_html=True
+    )
 def main():
+    render_page_header()
     local_css()
     data = load_real_data()
     render_sidebar_header()
