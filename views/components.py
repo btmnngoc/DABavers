@@ -295,12 +295,12 @@ def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
     # Làm sạch và chuẩn hoá
     df = df.drop(labels='Stocks', axis=1, errors='ignore')
     df['Indicator'] = df['Indicator'].astype(str).str.strip()
-    df['StockID'] = sector_name  # để có thể tái sử dụng hàm vẽ hiện tại
+    df['Stocks'] = sector_name  # để có thể tái sử dụng hàm vẽ hiện tại
 
     # Melt về long
     time_cols = df.columns[2:]
     df_long = df.melt(
-        id_vars=['Indicator', 'Industry', 'StockID'],
+        id_vars=['Indicator', 'Industry', 'Stocks'],
         value_vars=time_cols,
         var_name='Period',
         value_name='Value'
