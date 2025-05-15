@@ -306,9 +306,6 @@ def render_sector_indicators(data, sector_name):
         with tab:
             sub = df_longne[df_longne['Indicator'].isin(indicators)]
 
-            if sub.empty:
-                st.warning(f"Không có dữ liệu cho nhóm {group_name}")
-                continue
 
             st.subheader(f"Bảng số liệu - {group_name}")
             pivot_df = sub.pivot(index='Period', columns='Indicator', values='Value')
