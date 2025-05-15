@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.express as px
 from datetime import datetime
 from utils.plotting import plot_financial_metrics
+import pandas as pd
 
 def clean_indicator_name(name):
     # Tùy logic bạn muốn xử lý cột, đây là ví dụ
