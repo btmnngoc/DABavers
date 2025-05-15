@@ -284,7 +284,6 @@ def render_stock_movement(data, stock):
         st.plotly_chart(fig, use_container_width=True)
 
 def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
-    csv_path = "assets/data/financial_metrics_it_processed.csv"
     st.header(f"📊 Phân Tích Chỉ Số Tài Chính - {sector_name}")
 
     try:
@@ -323,7 +322,6 @@ def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
         'Q1_2024', 'Q2_2024', 'Q3_2024', 'Q4_2024'
     ]
     df_long['Period'] = df_long['Period'].astype(CategoricalDtype(categories=period_order, ordered=True))
-    df_long = df_long.sort_values(['Period'])
 
     indicator_groups = get_indicator_groups()
 
