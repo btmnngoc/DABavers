@@ -7,7 +7,7 @@ import streamlit as st
 def render_page_header():
     st.markdown(
         """
-        <h1 style='text-align: center; font-size: 2.5rem; color: #2E86C1;
+        <h1 style='text-align: center; font-size: 2.5rem; color: #FD6200;
                    border-bottom: 1px solid #ccc; padding-bottom: 10px;'>
             DABAFIN - PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP
         </h1>
