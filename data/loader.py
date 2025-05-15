@@ -131,3 +131,40 @@ def load_stock_transaction_data():
         else:
             stock_data[stock] = pd.DataFrame()
     return stock_data
+
+
+import pandas as pd
+from pandas.api.types import CategoricalDtype
+
+def load_financial_long_df():
+    path = "assets/data/financial_metrics_it_processed.csv"
+    df = pd.read_csv(path)
+    df = df.drop(columns='Stocks')
+    df['Indicator'] = df['Indicator'].astype(str).str.strip()
+
+    time_cols = df.columns[2:]
+    df_long = df.melt(
+        id_vars=['Indicator', 'Industry'],
+        value_vars=time_cols,
+        var_name='Period',
+        value_name='Value'
+    )
+
+    df_long['Value'] = (
+        df_long['Value']
+        .astype(str)
+        .str.replace(',', '')
+        .str.replace('\n', '')
+        .replace('', pd.NA)
+        .astype(float)
+    )
+    df_long.dropna(subset=['Value'], inplace=True)
+
+    period_order = [
+        'Q1_2023', 'Q2_2023', 'Q3_2023', 'Q4_2023',
+        'Q1_2024', 'Q2_2024', 'Q3_2024', 'Q4_2024'
+    ]
+    period_type = CategoricalDtype(categories=period_order, ordered=True)
+    df_long['Period'] = df_long['Period'].astype(period_type)
+
+    return df_long
