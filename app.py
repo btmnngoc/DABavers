@@ -8,8 +8,8 @@ def render_page_header():
     st.markdown(
     """
     <div style='text-align: center; line-height: 1.4;'>
-        <div style='font-size: 2.8rem; font-weight: 900; color: #f06428;'>DABAFIN</div>
-        <div style='font-size: 1.8rem; font-weight: 600; color: #1f4e79;'>PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP</div>
+        <div style='font-size: 2.8rem; font-weight: 900; color: #FD6200;'>DABAFIN</div>
+        <div style='font-size: 2.8rem; font-weight: 900; color: #84D0D0;'>PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP</div>
     </div>
     """,
     unsafe_allow_html=True
