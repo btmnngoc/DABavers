@@ -1,6 +1,10 @@
 from views.components import render_financial_health, render_stock_movement, render_sector_indicators
 import streamlit as st
 from pandas.api.types import CategoricalDtype  # THÊM VÀO
+import pandas as pd
+import re
+from pandas.api.types import CategoricalDtype
+from services.financial_utils import get_indicator_groups, clean_indicator_name
 
 def handle_analysis_menu(data):
     analysis_type = st.sidebar.radio("LOẠI PHÂN TÍCH", [
