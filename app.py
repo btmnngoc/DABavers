@@ -6,14 +6,18 @@ import streamlit as st
 
 def render_page_header():
     st.markdown(
-        """
-        <h1 style='text-align: center; font-size: 2.5rem; color: #FD6200;
-                   border-bottom: 1px solid #ccc; padding-bottom: 10px;'>
-            DABAFIN - PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP
-        </h1>
-        """,
-        unsafe_allow_html=True
-    )
+    """
+    <h1 style='text-align: center;  center; font-size: 2.5rem;
+                   border-bottom: 1px solid #ccc; padding-bottom: 10px;''>
+        <span style='color:#0E6994;'>DA</span>
+        <span style='color:#FD6200;'>BA</span>
+        <span style='color:#B2B2B2;'>FIN</span>
+        <span style='color:#0E6994;'>PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP</span>
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+
 def main():
     render_page_header()
     local_css()
