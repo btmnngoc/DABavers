@@ -25,7 +25,7 @@ def main():
         st.write('hi')
     render_footer()
 
-     st.sidebar.markdown("---")
+    st.sidebar.markdown("---")
     st.sidebar.markdown(
     """
     <div style='text-align: center; font-size: 0.85rem; color: gray; margin-top: 20px;'>
