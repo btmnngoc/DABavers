@@ -18,9 +18,6 @@ def render_page_header():
 )
 
 def main():
-    render_brand_title()
-    st.markdown("---")
-    show_financial_analysis()
     render_page_header()
     local_css()
     data = load_real_data()
