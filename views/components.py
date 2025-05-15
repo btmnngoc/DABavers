@@ -46,9 +46,6 @@ def render_footer():
         <p>Dữ liệu cập nhật đến {datetime.now().strftime("%d/%m/%Y")}</p>
     </div>
     """, unsafe_allow_html=True)
-
-def render_market_overview(data):
-    st.header("📊 Tổng Quan Thị Trường")
    
 
 
