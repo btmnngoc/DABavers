@@ -302,30 +302,34 @@ def render_sector_indicators(data, sector_name="Ngành Công nghệ thông tin")
     tabs = st.tabs(list(indicator_groups.keys()))
 
 
-    for tab, (group_name, indicator) in zip(tabs, indicator_groups.items()):
-        with tab:
-            sub = df_long[df_long['Indicator'].isin(indicator)]
+for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
+    with tab:
+        sub = df_long[df_long['Indicator'].isin(indicators)]
 
-            if sub.empty:
-                st.warning(f"Không có dữ liệu cho nhóm {group_name}")
-                continue
+        if sub.empty:
+            st.warning(f"Không có dữ liệu cho nhóm {group_name}")
+            continue
 
-            st.subheader(f"Bảng số liệu - {group_name}")
-            pivot_df = sub.pivot(index='Period', columns='Indicator', values='Value')
-            pivot_df = pivot_df.sort_index()
-            pivot_df.columns = [clean_indicator_name(col) for col in pivot_df.columns]
-            st.dataframe(
-                pivot_df.style.format("{:.2f}"),
-                use_container_width=True,
-                height=300
-            )
+        st.subheader(f"Bảng số liệu - {group_name}")
+        pivot_df = sub.pivot(index='Period', columns='Indicator', values='Value')
+        pivot_df = pivot_df.sort_index()
+        pivot_df.columns = [clean_indicator_name(col) for col in pivot_df.columns]
+        st.dataframe(
+            pivot_df.style.format("{:.2f}"),
+            use_container_width=True,
+            height=300
+        )
 
-            st.subheader(f"Biểu đồ - {group_name}")
-            fig = plot_financial_metrics(df_long, stock=sector_name, indicator_group={group_name: indicators})
-            if fig:
-                st.plotly_chart(fig, use_container_width=True)
-            else:
-                st.warning("Không có dữ liệu để vẽ biểu đồ")
+        st.subheader(f"Biểu đồ - {group_name}")
+        fig = plot_financial_metrics(
+            df_long, 
+            stock=sector_name, 
+            indicator_group={group_name: indicators}
+        )
+        if fig:
+            st.plotly_chart(fig, use_container_width=True)
+        else:
+            st.warning("Không có dữ liệu để vẽ biểu đồ")
 import streamlit as st
 
 def render_brand_title():
