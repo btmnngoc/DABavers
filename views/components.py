@@ -284,7 +284,7 @@ def render_stock_movement(data, stock):
         st.plotly_chart(fig, use_container_width=True)
 
 def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
-    csv_path = '
+    csv_path = 'assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv'
     st.header(f"📊 Phân Tích Chỉ Số Tài Chính - {sector_name}")
 
     try:
