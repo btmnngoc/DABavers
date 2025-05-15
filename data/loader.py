@@ -3,7 +3,23 @@ import os
 import streamlit as st
 
 
+def load_real_data():
+    data_paths = {
+        'FPT': 'assets/data/6.2 (his) financialreport_metrics_FPT_CMG_processed.csv',
+        'CMG': 'assets/data/6.2 (his) financialreport_metrics_FPT_CMG_processed.csv',
+        'Thị trường': 'assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv',
+        'Ngành CNTT': 'assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv'
+    }
 
+    data = {}
+    for key, path in data_paths.items():
+        if os.path.exists(path):
+            data[key] = pd.read_csv(path)
+        else:
+            st.error(f"Không tìm thấy file dữ liệu: {path}")
+            data[key] = pd.DataFrame()
+
+    return data
 
 import pandas as pd
 import re
