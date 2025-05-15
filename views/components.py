@@ -46,21 +46,7 @@ def render_footer():
 
 def render_market_overview(data):
     st.header("📊 Tổng Quan Thị Trường")
-    df = data.get('Thị trường')
-    if df is not None and not df.empty:
-        cols = st.columns(4)
-        metrics = {
-            "VN-Index": (df['VNIndex'].iloc[-1], df['VNIndex'].pct_change().iloc[-1] * 100),
-            "HNX-Index": (df['HNXIndex'].iloc[-1], df['HNXIndex'].pct_change().iloc[-1] * 100),
-            "Thanh khoản": (df['Volume'].iloc[-1] / 1e9, df['Volume'].pct_change().iloc[-1] * 100),
-            "VN30": (df['VN30'].iloc[-1], df['VN30'].pct_change().iloc[-1] * 100)
-        }
-        for (name, (value, change)), col in zip(metrics.items(), cols):
-            col.metric(name, f"{value:,.2f}", f"{change:.2f}%")
-        fig = px.line(df, x='Ngày', y=['VNIndex', 'HNXIndex'], title='Diễn biến chỉ số thị trường')
-        st.plotly_chart(fig, use_container_width=True)
-    else:
-        st.warning("Không có dữ liệu thị trường")
+   
 
 
 def render_financial_health(data, stock):
