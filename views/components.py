@@ -295,30 +295,24 @@ def render_sector_indicators(data, sector_name="Ngành Công nghệ thông tin")
     """,
     unsafe_allow_html=True
 )
-from data.loader import load_financial_data, get_indicator_groups
-    df = load_financial_data()
+    df_long = load_financial_long_df()
+
     indicator_groups = get_indicator_groups()
-
-    # Filter for selected stock
-    df_stock = df[df['StockID'] == stock]
-
-    # Create tabs for each indicator group
+    # Tạo tabs
     tabs = st.tabs(list(indicator_groups.keys()))
 
-    for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
+
+    for tab, (group_name, indicator) in zip(tabs, indicator_groups.items()):
         with tab:
-            # Get data for current group
-            sub = df_stock[df_stock['Indicator'].isin(indicators)]
+            sub = df_long[df_long['Indicator'].isin(indicator)]
 
             if sub.empty:
                 st.warning(f"Không có dữ liệu cho nhóm {group_name}")
                 continue
 
-            # Display data table
-            st.subheader(f"Bảng số liệu {group_name}")
-            # Trong hàm show_financial_health()
+            st.subheader(f"Bảng số liệu - {group_name}")
             pivot_df = sub.pivot(index='Period', columns='Indicator', values='Value')
-            pivot_df = pivot_df.sort_index()  # Thêm dòng này để sắp xếp theo thứ tự thời gian
+            pivot_df = pivot_df.sort_index()
             pivot_df.columns = [clean_indicator_name(col) for col in pivot_df.columns]
             st.dataframe(
                 pivot_df.style.format("{:.2f}"),
@@ -326,14 +320,8 @@ from data.loader import load_financial_data, get_indicator_groups
                 height=300
             )
 
-            # Display interactive chart
-            st.subheader(f"Biểu đồ {group_name}")
-            fig = plot_financial_metrics(
-                df,
-                stock,
-                {group_name: indicators}
-            )
-
+            st.subheader(f"Biểu đồ - {group_name}")
+            fig = plot_financial_metrics(df_long, stock=sector_name, indicator_group={group_name: indicators})
             if fig:
                 st.plotly_chart(fig, use_container_width=True)
             else:
