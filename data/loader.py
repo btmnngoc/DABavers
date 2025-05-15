@@ -7,8 +7,8 @@ def load_real_data():
     data_paths = {
         'FPT': 'assets/data/6.2 (his) financialreport_metrics_FPT_CMG_processed.csv',
         'CMG': 'assets/data/6.2 (his) financialreport_metrics_FPT_CMG_processed.csv',
-        'Thị trường': 'assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv',
-        'Ngành CNTT': 'assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv'
+        'Thị trường': 'assets/data/financial_metrics_it_processed.csv',
+        'Ngành CNTT': 'assets/data/financial_metrics_it_processed.csv'
     }
 
     data = {}
