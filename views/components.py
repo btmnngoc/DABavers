@@ -6,6 +6,10 @@ import pandas as pd
 from pandas.api.types import CategoricalDtype
 from data.loader import get_indicator_groups, load_financial_long_df, get_indicator_groupsne
 
+def clean_indicator_name(name):
+    # Tùy logic bạn muốn xử lý cột, đây là ví dụ
+    return name.strip().replace("_", " ").title()
+
 
 def local_css():
     st.markdown("""
