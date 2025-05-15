@@ -321,7 +321,6 @@ def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
         'Q1_2023', 'Q2_2023', 'Q3_2023', 'Q4_2023',
         'Q1_2024', 'Q2_2024', 'Q3_2024', 'Q4_2024'
     ]
-    df_long['Period'] = df_long['Period'].astype(CategoricalDtype(categories=period_order, ordered=True))
     df_long = df_long.sort_values(['Period'])
 
     indicator_groups = get_indicator_groups()
