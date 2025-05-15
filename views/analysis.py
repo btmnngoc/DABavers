@@ -1,4 +1,4 @@
-from views.components import render_financial_health, render_stock_movement
+from views.components import render_financial_health, render_stock_movement, render_sector_indicators
 import streamlit as st
 
 def handle_analysis_menu(data):
