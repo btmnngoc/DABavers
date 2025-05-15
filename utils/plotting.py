@@ -6,7 +6,7 @@ from plotly.subplots import make_subplots
 import re
 import plotly.express as px
 
-def plot_financial_metrics(df, stock, indicator_group):
+def plot_financial_metrics(df, stock, indicator_group, chart_type="line"):
     """Create interactive financial metrics plot"""
 
     # Check type of indicator_group
