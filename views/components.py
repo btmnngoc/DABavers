@@ -354,3 +354,16 @@ def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.warning("Không có dữ liệu để vẽ biểu đồ")
+
+import streamlit as st
+
+def render_brand_title():
+    st.markdown(
+        """
+        <div style='text-align: center; line-height: 1.4;'>
+            <div style='font-size: 2.8rem; font-weight: 900; color: #f06428;'>DABAFIN</div>
+            <div style='font-size: 1.8rem; font-weight: 600; color: #1f4e79;'>PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
