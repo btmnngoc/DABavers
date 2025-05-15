@@ -53,7 +53,7 @@ def render_financial_health(data, stock):
     """Display financial health analysis for a stock"""
     st.markdown(
     f"""
-    <h2 style='color: #2E86C1; font-weight: 700;'>
+    <h2 style='color: #0E6994; font-weight: 700;'>
         📈 Sức Khỏe Tài Chính - {stock}
     </h2>
     """,
