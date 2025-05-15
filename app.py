@@ -16,6 +16,16 @@ def main():
 
     menu_option = st.sidebar.radio("MENU CHÍNH", ["Phân tích", "Dự đoán", "Tối ưu đầu tư"])
     st.sidebar.markdown("---")
+
+    if menu_option == "Phân tích":
+        handle_analysis_menu(data)
+    elif menu_option == "Dự đoán":
+        st.warning('Chuc nang dang duoc xay dung')
+    elif menu_option == "Tối ưu đầu tư":
+        st.write('hi')
+    render_footer()
+
+     st.sidebar.markdown("---")
     st.sidebar.markdown(
     """
     <div style='text-align: center; font-size: 0.85rem; color: gray; margin-top: 20px;'>
@@ -25,13 +35,6 @@ def main():
     unsafe_allow_html=True
 )
 
-    if menu_option == "Phân tích":
-        handle_analysis_menu(data)
-    elif menu_option == "Dự đoán":
-        st.warning('Chuc nang dang duoc xay dung')
-    elif menu_option == "Tối ưu đầu tư":
-        st.write('hi')
-    render_footer()
 
 if __name__ == "__main__":
     main()
