@@ -84,8 +84,6 @@ def render_financial_health(data, stock):
                 use_container_width=True,
                 height=300
             )
-            chart_type = st.selectbox("Chọn loại biểu đồ", ["line", "bar"])
-            fig = plot_financial_metrics(df, stock, {group_name: indicators}, chart_type=chart_type)
 
             # Display interactive chart
             st.subheader(f"Biểu đồ {group_name}")
