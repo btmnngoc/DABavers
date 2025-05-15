@@ -4,7 +4,6 @@ from views.components import render_sidebar_header, render_footer, local_css
 from data.loader import load_stock_transaction_data
 import streamlit as st
 
-st.header('DABAFIN - PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP')
 def render_page_header():
     st.markdown(
         """
