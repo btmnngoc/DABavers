@@ -302,9 +302,9 @@ def render_sector_indicators(data, sector_name="Ngành Công nghệ thông tin")
     tabs = st.tabs(list(indicator_groups.keys()))
 
 
-    for tab, (group_name, indicator) in zip(tabs, indicator_groups.items()):
+    for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
         with tab:
-            sub = df_long[df_long['Indicator'].isin(indicator)]
+            sub = df_long[df_long['Indicator'].isin(indicators)]
 
             if sub.empty:
                 st.warning(f"Không có dữ liệu cho nhóm {group_name}")
