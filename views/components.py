@@ -285,7 +285,7 @@ def render_stock_movement(data, stock):
 
         st.plotly_chart(fig, use_container_width=True)
 
-def render_sector_indicators(csv_path, sector_name="Ngành Công nghệ thông tin"):
+def render_sector_indicators(data, sector_name="Ngành Công nghệ thông tin"):
     st.markdown(
     f"""
     <h2 style='font-weight: 700; text-align: center;'>
@@ -295,24 +295,30 @@ def render_sector_indicators(csv_path, sector_name="Ngành Công nghệ thông t
     """,
     unsafe_allow_html=True
 )
-    df_long = load_financial_long_df()
-
+from data.loader import load_financial_data, get_indicator_groups
+    df = load_financial_data()
     indicator_groups = get_indicator_groups()
-    # Tạo tabs
+
+    # Filter for selected stock
+    df_stock = df[df['StockID'] == stock]
+
+    # Create tabs for each indicator group
     tabs = st.tabs(list(indicator_groups.keys()))
 
-
-    for tab, (group_name, indicator) in zip(tabs, indicator_groups.items()):
+    for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
         with tab:
-            sub = df_long[df_long['Indicator'].isin(indicator)]
+            # Get data for current group
+            sub = df_stock[df_stock['Indicator'].isin(indicators)]
 
             if sub.empty:
                 st.warning(f"Không có dữ liệu cho nhóm {group_name}")
                 continue
 
-            st.subheader(f"Bảng số liệu - {group_name}")
+            # Display data table
+            st.subheader(f"Bảng số liệu {group_name}")
+            # Trong hàm show_financial_health()
             pivot_df = sub.pivot(index='Period', columns='Indicator', values='Value')
-            pivot_df = pivot_df.sort_index()
+            pivot_df = pivot_df.sort_index()  # Thêm dòng này để sắp xếp theo thứ tự thời gian
             pivot_df.columns = [clean_indicator_name(col) for col in pivot_df.columns]
             st.dataframe(
                 pivot_df.style.format("{:.2f}"),
@@ -320,13 +326,18 @@ def render_sector_indicators(csv_path, sector_name="Ngành Công nghệ thông t
                 height=300
             )
 
-            st.subheader(f"Biểu đồ - {group_name}")
-            fig = plot_financial_metrics(df_long, stock=sector_name, indicator_group={group_name: indicators})
+            # Display interactive chart
+            st.subheader(f"Biểu đồ {group_name}")
+            fig = plot_financial_metrics(
+                df,
+                stock,
+                {group_name: indicators}
+            )
+
             if fig:
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.warning("Không có dữ liệu để vẽ biểu đồ")
-
 import streamlit as st
 
 def render_brand_title():
