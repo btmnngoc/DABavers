@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.express as px
 from datetime import datetime
-from utils.plotting import plot_financial_metrics
+from utils.plotting import plot_financial_metrics, plot_financial_metricsne
 import pandas as pd
 from pandas.api.types import CategoricalDtype
 from data.loader import get_indicator_groups, load_financial_long_df, get_indicator_groupsne
@@ -321,7 +321,7 @@ def render_sector_indicators(data, sector_name="Ngành Công nghệ thông tin")
             )
 
             st.subheader(f"Biểu đồ - {group_name}")
-            fig = plot_financial_metrics(df_long, stock=sector_name, indicator_group={group_name: indicators})
+            fig = plot_financial_metricsne(df_long, indicator_group={group_name: indicators})
             if fig:
                 st.plotly_chart(fig, use_container_width=True)
             else:
