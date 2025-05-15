@@ -11,7 +11,7 @@ def handle_analysis_menu(data):
     ])
 
     if analysis_type == "Tổng quan":
-        render_sector_indicators('assets/data/financial_metrics_it_processed.csv', sector_name="Ngành công nghệ thông tin")
+        render_sector_indicators('assets/data/financial_metrics_it_processed.csv', sector_name="NGÀNH CÔNG NGHỆ THÔNG TIN")
     elif analysis_type == "Sức khỏe tài chính doanh nghiệp":
         stock = st.sidebar.radio("CHỌN MÃ", ["FPT", "CMG"])
         render_financial_health(data, stock)
