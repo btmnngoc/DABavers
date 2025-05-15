@@ -16,6 +16,14 @@ def main():
 
     menu_option = st.sidebar.radio("MENU CHÍNH", ["Phân tích", "Dự đoán", "Tối ưu đầu tư"])
     st.sidebar.markdown("---")
+    st.sidebar.markdown(
+    """
+    <div style='text-align: center; font-size: 0.85rem; color: gray; margin-top: 20px;'>
+        © 2025 DABAFIN | Phân tích tài chính doanh nghiệp
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
     if menu_option == "Phân tích":
         handle_analysis_menu(data)
