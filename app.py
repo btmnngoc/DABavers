@@ -9,7 +9,7 @@ def render_page_header():
     """
     <div style='text-align: center; line-height: 1.4;'>
         <div style='font-size: 2.8rem; font-weight: 900; color: #FD6200;'>DABAFIN</div>
-        <div style='font-size: 2.8rem; font-weight: 900; color: #84D0D0;'>PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP</div>
+        <div style='font-size: 2rem; font-weight: 800; color: #0E6994;'>PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP</div>
     </div>
     """,
     unsafe_allow_html=True
