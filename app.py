@@ -3,6 +3,8 @@ from views.analysis import handle_analysis_menu
 from views.components import render_sidebar_header, render_footer, local_css
 from data.loader import load_stock_transaction_data
 import streamlit as st
+st.set_page_config(page_title="DABAFIN", layout="wide")
+
 
 def render_page_header():
     st.markdown(
@@ -16,6 +18,9 @@ def render_page_header():
 )
 
 def main():
+    render_brand_title()
+    st.markdown("---")
+    show_financial_analysis()
     render_page_header()
     local_css()
     data = load_real_data()
