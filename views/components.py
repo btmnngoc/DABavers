@@ -4,7 +4,7 @@ from datetime import datetime
 from utils.plotting import plot_financial_metrics
 import pandas as pd
 from pandas.api.types import CategoricalDtype
-from data.loader import get_indicator_groups, load_financial_long_df
+from data.loader import get_indicator_groups, load_financial_long_df, get_indicator_groupsne
 
 def clean_indicator_name(name):
     # Tùy logic bạn muốn xử lý cột, đây là ví dụ
@@ -297,7 +297,7 @@ def render_sector_indicators(data, sector_name="Ngành Công nghệ thông tin")
 )
     df_long = load_financial_long_df()
 
-    indicator_groups = get_indicator_groups()
+    indicator_groups = get_indicator_groupsne()
     # Tạo tabs
     tabs = st.tabs(list(indicator_groups.keys()))
 
