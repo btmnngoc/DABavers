@@ -9,7 +9,6 @@ import pandas as pd
 import re
 from pandas.api.types import CategoricalDtype
 from services.financial_utils import get_indicator_groups, clean_indicator_name
-from utils.plotting import plot_financial_metrics
 
 def clean_indicator_name(name):
     # Tùy logic bạn muốn xử lý cột, đây là ví dụ
