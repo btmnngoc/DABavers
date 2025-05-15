@@ -17,6 +17,15 @@ def render_page_header():
     """,
     unsafe_allow_html=True
 )
+    st.markdown(
+    """
+    <h1 style='text-align: center; font-size: 2.5rem; color: #FD6200;
+                border-bottom: 1px solid #ccc; padding-bottom: 10px;'>
+        DABAFIN - PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
 
 def main():
     render_page_header()
