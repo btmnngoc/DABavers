@@ -113,8 +113,9 @@ from services.financial_utils import compute_rsi
 def render_stock_movement(data, stock):
     st.markdown(
     f"""
-    <h2 style='color: #0E6994; font-weight: 700;'>
-        📊 BIẾN ĐỘNG CỔ PHIẾU - {stock}
+    <h2 style='font-weight: 700; text-align: center;'>
+        <span style='color: #0E6994;'>📊 BIẾN ĐỘNG CỔ PHIẾU  -</span>
+        <span style='color: #FD6200;'>{stock}</span>
     </h2>
     """,
     unsafe_allow_html=True
