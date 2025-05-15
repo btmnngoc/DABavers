@@ -295,16 +295,16 @@ def render_sector_indicators(data, sector_name="Ngành Công nghệ thông tin")
     """,
     unsafe_allow_html=True
 )
-    df_long = load_financial_long_df()
+    df_longne = load_financial_long_df()
 
-    indicator_groups = get_indicator_groupsne()
+    indicator_groupsne = get_indicator_groupsne()
     # Tạo tabs
-    tabs = st.tabs(list(indicator_groups.keys()))
+    tabs = st.tabs(list(indicator_groupsne.keys()))
 
 
-    for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
+    for tab, (group_name, indicators) in zip(tabs, indicator_groupsne.items()):
         with tab:
-            sub = df_long[df_long['Indicator'].isin(indicators)]
+            sub = df_longne[df_longne['Indicator'].isin(indicators)]
 
             if sub.empty:
                 st.warning(f"Không có dữ liệu cho nhóm {group_name}")
