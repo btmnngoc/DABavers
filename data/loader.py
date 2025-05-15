@@ -166,5 +166,7 @@ def load_financial_long_df():
     ]
     period_type = CategoricalDtype(categories=period_order, ordered=True)
     df_long['Period'] = df_long['Period'].astype(period_type)
+    df_long = df_long.sort_values(['Period'])
+
 
     return df_long
