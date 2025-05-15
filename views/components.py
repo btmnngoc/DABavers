@@ -4,7 +4,7 @@ from datetime import datetime
 from utils.plotting import plot_financial_metrics
 import pandas as pd
 from pandas.api.types import CategoricalDtype
-from data.loader import get_indicator_groups
+from data.loader import get_indicator_groups, load_financial_long_df
 
 def clean_indicator_name(name):
     # Tùy logic bạn muốn xử lý cột, đây là ví dụ
@@ -295,44 +295,8 @@ def render_sector_indicators(csv_path, sector_name="Ngành Công nghệ thông t
     """,
     unsafe_allow_html=True
 )
+    df_long = load_financial_long_df()
 
-    try:
-        df = pd.read_csv(csv_path)
-    except Exception as e:
-        st.error(f"Lỗi khi đọc dữ liệu: {e}")
-        return
-
-    # Làm sạch và chuẩn hoá
-    df = df.drop(labels='Stocks', axis=1, errors='ignore')
-    df['Indicator'] = df['Indicator'].astype(str).str.strip()
-    df['Stocks'] = sector_name  # để có thể tái sử dụng hàm vẽ hiện tại
-
-    # Melt về long
-    time_cols = df.columns[2:]
-    df_long = df.melt(
-        id_vars=['Indicator', 'Industry', 'Stocks'],
-        value_vars=time_cols,
-        var_name='Period',
-        value_name='Value'
-    )
-
-    df_long['Value'] = (
-        df_long['Value']
-        .astype(str)
-        .str.replace(',', '')
-        .str.replace('\n', '')
-        .replace('', pd.NA)
-        .astype(float)
-    )
-    df_long.dropna(subset=['Value'], inplace=True)
-
-    # Chuẩn hoá Period
-    period_order = [
-        'Q1_2023', 'Q2_2023', 'Q3_2023', 'Q4_2023',
-        'Q1_2024', 'Q2_2024', 'Q3_2024', 'Q4_2024'
-    ]
-    df_long = df_long.sort_values(['Period'])
-    df_long['Period'] = df_long['Period'].astype(CategoricalDtype(categories=period_order, ordered=True))
     indicator_groups = get_indicator_groups()
     # Tạo tabs
     tabs = st.tabs(list(indicator_groups.keys()))
