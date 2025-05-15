@@ -285,7 +285,7 @@ def render_stock_movement(data, stock):
 
         st.plotly_chart(fig, use_container_width=True)
 
-def render_sector_indicators(data, sector_name="Ngành Công nghệ thông tin"):
+def render_sector_indicators(data, sector_name):
     st.markdown(
     f"""
     <h2 style='font-weight: 700; text-align: center;'>
