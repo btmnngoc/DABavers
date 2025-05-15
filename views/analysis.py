@@ -1,6 +1,6 @@
 from views.components import render_financial_health, render_stock_movement, render_sector_indicators
 import streamlit as st
-csv_path = "assets/data/6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv"
+csv_path = "Bản sao 6.5 (his) financialreport_metrics_Nhóm ngành_Công nghệ thông tin (of FPT_CMG)_processed.csv"
 
 def handle_analysis_menu(data):
     analysis_type = st.sidebar.radio("LOẠI PHÂN TÍCH", [
