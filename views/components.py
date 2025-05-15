@@ -324,8 +324,6 @@ def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
     df_long = df_long.sort_values(['Period'])
 
 
-    # Tạo tabs
-    tabs = st.tabs(list(indicator_groups.keys()))
 
     for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
         with tab:
