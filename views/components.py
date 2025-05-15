@@ -302,7 +302,7 @@ def render_sector_indicators(csv_path, sector_name="Ngành Công nghệ thông t
     tabs = st.tabs(list(indicator_groups.keys()))
 
 
-    for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
+    for tab, (group_name, indicator) in zip(tabs, indicator_groups.items()):
         with tab:
             sub = df_long[df_long['Indicator'].isin(indicator)]
 
