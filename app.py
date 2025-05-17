@@ -10,7 +10,7 @@ def render_page_header():
     st.markdown(
     """
     <div style='text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 10px;'>
-        <div style='font-size: 2.8rem; font-weight: 900; color: #FD6200;'>DAB</div>
+        <div style='font-size: 2.8rem; font-weight: 900; color: #FD6200;'>DABFIN - test</div>
         <div style='font-size: 2.5rem; font-weight: 900; color: #0E6994;'>PHÂN TÍCH TÀI CHÍNH DOANH NGHIỆP</div>
     </div>
     """,
