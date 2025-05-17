@@ -287,7 +287,7 @@ def render_sector_indicators(data, sector_name):
     st.markdown(
     f"""
     <h2 style='font-weight: 700; text-align: center;'>
-        <span style='color: #0E6994;'>📊 CHỈ SỐ TÀI CHÍNH THỊ TRƯỜNG  -</span>
+        <span style='color: #0E6994;'>📊 CHỈ SỐ TÀI CHÍNH THỊ TRƯỜNG -</span>
         <span style='color: #FD6200;'>{sector_name}</span>
     </h2>
     """,
