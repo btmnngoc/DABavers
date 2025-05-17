@@ -293,7 +293,7 @@ def render_sector_indicators(data, sector_name):
     """,
     unsafe_allow_html=True
 )
-    df_longne = load_financial_long_df()
+    df_long = load_financial_long_df()
 
     indicator_groupsne = get_indicator_groupsne()
     # Tạo tabs
@@ -302,7 +302,7 @@ def render_sector_indicators(data, sector_name):
 
     for tab, (group_name, indicators) in zip(tabs, indicator_groupsne.items()):
         with tab:
-            sub = df_longne[df_longne['Indicator'].isin(indicators)]
+            sub = df_long[df_long['Indicator'].isin(indicators)]
             if sub.empty:
                 st.warning(f"Không có dữ liệu cho nhóm {group_name}")
                 continue
@@ -318,7 +318,7 @@ def render_sector_indicators(data, sector_name):
             )
 
             st.subheader(f"Biểu đồ - {group_name}")
-            fig = plot_financial_metricsne(df_longne, indicator_groupsne={group_name: indicators})
+            fig = plot_financial_metricsne(df_long, indicator_groupsne={group_name: indicators})
             if fig:
                 st.plotly_chart(fig, use_container_width=True)
             else:

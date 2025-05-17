@@ -67,7 +67,7 @@ def plot_financial_metrics(df, stock, indicator_group):
     return fig
 
 
-def plot_financial_metricsne(df_longne, indicator_groupsne):
+def plot_financial_metricsne(df_long, indicator_groupsne):
     """Create interactive financial metrics plot"""
 
     # Check type of indicator_group
@@ -106,7 +106,7 @@ def plot_financial_metricsne(df_longne, indicator_groupsne):
     # Trong hàm plot_financial_metrics()
     fig.update_xaxes(
         categoryorder='array',
-        categoryarray=df_longne['Period'].unique().sort_values())
+        categoryarray=df_long['Period'].unique().sort_values())
 
     # Customize layout
     fig.update_layout(
