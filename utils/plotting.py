@@ -67,7 +67,7 @@ def plot_financial_metrics(df, stock, indicator_group):
     return fig
 
 
-def plot_financial_metricsne(df, indicator_groupsne):
+def plot_financial_metricsne(df_longne, indicator_groupsne):
     """Create interactive financial metrics plot"""
 
     # Check type of indicator_group
