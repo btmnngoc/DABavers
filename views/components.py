@@ -283,26 +283,56 @@ def render_stock_movement(data, stock):
 
         st.plotly_chart(fig, use_container_width=True)
 
-def render_sector_indicators(data, sector_name):
-    st.markdown(
-    f"""
-    <h2 style='font-weight: 700; text-align: center;'>
-        <span style='color: #0E6994;'>📊 CHỈ SỐ TÀI CHÍNH THỊ TRƯỜNG -</span>
-        <span style='color: #FD6200;'>{sector_name}</span>
-    </h2>
-    """,
-    unsafe_allow_html=True
-)
-    df_long = load_financial_long_df()
+def render_sector_indicators(csv_path, sector_name="Ngành CNTT"):
+    st.header(f"📊 Phân Tích Chỉ Số Tài Chính - {sector_name}")
 
-    indicator_groupsne = get_indicator_groups()
+    try:
+        df = pd.read_csv(csv_path)
+    except Exception as e:
+        st.error(f"Lỗi khi đọc dữ liệu: {e}")
+        return
+
+    # Làm sạch và chuẩn hoá
+    df = df.drop(labels='Stocks', axis=1, errors='ignore')
+    df['Indicator'] = df['Indicator'].astype(str).str.strip()
+    df['StockID'] = sector_name  # để có thể tái sử dụng hàm vẽ hiện tại
+
+    # Melt về long
+    time_cols = df.columns[2:]
+    df_long = df.melt(
+        id_vars=['Indicator', 'Industry', 'StockID'],
+        value_vars=time_cols,
+        var_name='Period',
+        value_name='Value'
+    )
+
+    df_long['Value'] = (
+        df_long['Value']
+        .astype(str)
+        .str.replace(',', '')
+        .str.replace('\n', '')
+        .replace('', pd.NA)
+        .astype(float)
+    )
+    df_long.dropna(subset=['Value'], inplace=True)
+
+    # Chuẩn hoá Period
+    period_order = [
+        'Q1_2023', 'Q2_2023', 'Q3_2023', 'Q4_2023',
+        'Q1_2024', 'Q2_2024', 'Q3_2024', 'Q4_2024'
+    ]
+    df_long['Period'] = df_long['Period'].astype(CategoricalDtype(categories=period_order, ordered=True))
+    df_long = df_long.sort_values(['Period'])
+
+    indicator_groups = get_indicator_groups()
+
     # Tạo tabs
-    tabs = st.tabs(list(indicator_groupsne.keys()))
+    tabs = st.tabs(list(indicator_groups.keys()))
 
-
-    for tab, (group_name, indicators) in zip(tabs, indicator_groupsne.items()):
+    for tab, (group_name, indicators) in zip(tabs, indicator_groups.items()):
         with tab:
             sub = df_long[df_long['Indicator'].isin(indicators)]
+
             if sub.empty:
                 st.warning(f"Không có dữ liệu cho nhóm {group_name}")
                 continue
@@ -318,11 +348,13 @@ def render_sector_indicators(data, sector_name):
             )
 
             st.subheader(f"Biểu đồ - {group_name}")
-            fig = plot_financial_metricsne(df_long, indicator_groupsne={group_name: indicators})
+            fig = plot_financial_metrics(df_long, stock=sector_name, indicator_group={group_name: indicators})
             if fig:
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.warning("Không có dữ liệu để vẽ biểu đồ")
+
+
 import streamlit as st
 
 def render_brand_title():
