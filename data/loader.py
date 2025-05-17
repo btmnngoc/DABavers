@@ -183,7 +183,7 @@ def load_financial_long_df():
         raise Exception(f"Error loading financial data: {str(e)}")
 
 
-def get_indicator_groupsne():
+def get_indicator_groups():
     return {
         'Khả năng sinh lời': [
             'Tỷ suất sinh lợi trên tổng tài sản bình quân (ROAA)\n%',
