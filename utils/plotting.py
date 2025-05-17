@@ -67,15 +67,15 @@ def plot_financial_metrics(df, stock, indicator_group):
     return fig
 
 
-def plot_financial_metricsne(df, indicator_group):
+def plot_financial_metricsne(df, indicator_groupsne):
     """Create interactive financial metrics plot"""
 
     # Check type of indicator_group
-    if isinstance(indicator_group, dict):
-        indicator_list = list(indicator_group.values())[0]
-        title_text = list(indicator_group.keys())[0]
+    if isinstance(indicator_groupsne, dict):
+        indicator_list = list(indicator_groupsne.values())[0]
+        title_text = list(indicator_groupsne.keys())[0]
     else:
-        indicator_list = indicator_group
+        indicator_list = indicator_groupsne
         title_text = "Chỉ số tài chính"
 
     # Filter data
@@ -101,7 +101,7 @@ def plot_financial_metricsne(df, indicator_group):
             'Period': 'Kỳ báo cáo',
             'Indicator_clean': 'Chỉ số'
         },
-        title = f"{title_text} - {stock}",
+        title = f"{title_text} - {sector_name}",
     )
     # Trong hàm plot_financial_metrics()
     fig.update_xaxes(
