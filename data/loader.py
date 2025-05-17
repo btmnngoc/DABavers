@@ -173,31 +173,30 @@ def load_financial_long_df():
 
 
 def get_indicator_groupsne():
-    """Define financial indicator groups"""
     return {
         'Khả năng sinh lời': [
-            'Tỷ suất sinh lợi trên tổng tài sản bình quân (ROAA) %',
-            'Tỷ suất lợi nhuận trên vốn chủ sở hữu bình quân (ROEA) %',
-            'Tỷ suất lợi nhuận gộp biên %',
-            'Tỷ suất sinh lợi trên doanh thu thuần %'
+            'Tỷ suất sinh lợi trên tổng tài sản bình quân (ROAA)\n%',
+            'Tỷ suất lợi nhuận trên vốn chủ sở hữu bình quân (ROEA)\n%',
+            'Tỷ suất lợi nhuận gộp biên\n%',
+            'Tỷ suất sinh lợi trên doanh thu thuần\n%'
         ],
         'Khả năng thanh toán': [
-            'Tỷ số thanh toán hiện hành (ngắn hạn) Lần',
-            'Tỷ số thanh toán nhanh Lần',
-            'Tỷ số thanh toán bằng tiền mặt Lần'
+            'Tỷ số thanh toán hiện hành (ngắn hạn)\nLần',
+            'Tỷ số thanh toán nhanh\nLần',
+            'Tỷ số thanh toán bằng tiền mặt\nLần'
         ],
         'Đòn bẩy tài chính': [
-            'Tỷ số Nợ trên Tổng tài sản %',
-            'Tỷ số Nợ trên Vốn chủ sở hữu %'
+            'Tỷ số Nợ trên Tổng tài sản\n%',
+            'Tỷ số Nợ trên Vốn chủ sở hữu\n%'
         ],
         'Hiệu quả hoạt động': [
-            'Vòng quay tổng tài sản (Hiệu suất sử dụng toàn bộ tài sản) Vòng',
-            'Vòng quay hàng tồn kho Vòng',
-            'Vòng quay phải thu khách hàng Vòng'
+            'Vòng quay tổng tài sản (Hiệu suất sử dụng toàn bộ tài sản)\nVòng',
+            'Vòng quay hàng tồn kho\nVòng',
+            'Vòng quay phải thu khách hàng\nVòng'
         ],
         'Chỉ số thị trường': [
-            'Chỉ số giá thị trường trên thu nhập (P/E) Lần',
-            'Chỉ số giá thị trường trên giá trị sổ sách (P/B) Lần',
-            'Beta Lần'
+            'Chỉ số giá thị trường trên thu nhập (P/E)\nLần',
+            'Chỉ số giá thị trường trên giá trị sổ sách (P/B)\nLần',
+            'Beta\nLần'
         ]
     }

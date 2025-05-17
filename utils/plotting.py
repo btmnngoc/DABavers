@@ -106,7 +106,7 @@ def plot_financial_metricsne(df_longne, indicator_groupsne):
     # Trong hàm plot_financial_metrics()
     fig.update_xaxes(
         categoryorder='array',
-        categoryarray=df['Period'].unique().sort_values())
+        categoryarray=df_longne['Period'].unique().sort_values())
 
     # Customize layout
     fig.update_layout(
