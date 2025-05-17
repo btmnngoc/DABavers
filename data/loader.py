@@ -137,39 +137,50 @@ import pandas as pd
 from pandas.api.types import CategoricalDtype
 
 def load_financial_long_df():
-    path = "assets/data/financial_metrics_it_processed.csv"
-    df = pd.read_csv(path)
-    df = df.drop(columns='Stocks')
-    df['Indicator'] = df['Indicator'].astype(str).str.strip()
+    data_dir = Path(__file__).parent.parent / "assets" / "data"
+    file_path = data_dir / "financial_metrics_it_processed.csv"
 
-    time_cols = df.columns[2:]
-    df_long = df.melt(
-        id_vars=['Indicator', 'Industry'],
-        value_vars=time_cols,
-        var_name='Period',
-        value_name='Value'
-    )
+    try:
+        df = pd.read_csv(file_path, encoding='utf-8-sig')
 
-    df_long['Value'] = (
-        df_long['Value']
-        .astype(str)
-        .str.replace(',', '')
-        .str.replace('\n', '')
-        .replace('', pd.NA)
-        .astype(float)
-    )
-    df_long.dropna(subset=['Value'], inplace=True)
+        # Clean Indicator column
+        df['Indicator'] = df['Indicator'].astype(str).str.strip()
 
-    period_order = [
-        'Q1_2023', 'Q2_2023', 'Q3_2023', 'Q4_2023',
-        'Q1_2024', 'Q2_2024', 'Q3_2024', 'Q4_2024'
-    ]
-    period_type = CategoricalDtype(categories=period_order, ordered=True)
-    df_long['Period'] = df_long['Period'].astype(period_type)
-    df_long = df_long.sort_values(['Period'])
+        # Melt to long format
+        time_cols = [col for col in df.columns if col.startswith('Q')]
+        df_long = df.melt(
+            id_vars=['Indicator', 'StockID'],
+            value_vars=time_cols,
+            var_name='Period',
+            value_name='Value'
+        )
 
+        # Clean Value column
+        df_long['Value'] = (
+            df_long['Value']
+            .astype(str)
+            .str.replace(',', '')
+            .str.replace('\n', '')
+            .replace('', pd.NA)
+            .astype(float)
+        )
+        df_long.dropna(subset=['Value'], inplace=True)
 
-    return df_long
+        # Cập nhật phần chuẩn hóa định dạng thời gian
+        period_order = [
+            'Q1_2023', 'Q2_2023', 'Q3_2023', 'Q4_2023',
+            'Q1_2024', 'Q2_2024', 'Q3_2024', 'Q4_2024'  # Thêm các quý 2024 nếu có
+        ]
+
+        # Chuyển Period thành kiểu Categorical với thứ tự đúng
+        period_type = CategoricalDtype(categories=period_order, ordered=True)
+        df_long['Period'] = df_long['Period'].astype(period_type)
+        df_long = df_long.sort_values(['Period'])
+
+        return df_long
+
+    except Exception as e:
+        raise Exception(f"Error loading financial data: {str(e)}")
 
 
 def get_indicator_groupsne():
